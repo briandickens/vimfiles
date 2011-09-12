@@ -1,0 +1,11 @@
+# Ignore root files
+_*
+
+# Except for _vimrc
+!_vimrc
+
+# Ignore vim program directory
+/vim73
+
+# Ignore undo files
+/vimfiles/undo
