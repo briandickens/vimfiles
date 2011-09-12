@@ -9,3 +9,9 @@ _*
 
 # Ignore undo files
 /vimfiles/undo
+
+# Ignore unused bundles
+/vimfiles/bundle-unused
+
+# Also ignor bundles!
+/vimfiles/bundle
