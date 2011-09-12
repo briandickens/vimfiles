@@ -10,52 +10,52 @@ inoremap <Left> <Nop>
 inoremap <Down> <Nop>
 inoremap <Up> <Nop>
 map! <S-Insert> *
-map rs :call RopeChangeSignature()
-map ra/ :call RopeCodeAssist()
-map rm :call RopeExtractMethod()
-map rl :call RopeExtractVariable()
-map rai :call RopeFindImplementations()
-map raf :call RopeFindOccurrences()
-map rnc :call RopeGenerateClass()
-map rnf :call RopeGenerateFunction()
-map rnm :call RopeGenerateModule()
-map rnp :call RopeGeneratePackage()
-map rnv :call RopeGenerateVariable()
-map rag :call RopeGotoDefinition()
-map ri :call RopeInline()
-map rf :call RopeIntroduceFactory()
-map raj :call RopeJumpToGlobal()
-map ra? :call RopeLuckyAssist()
-map r1p :call RopeModuleToPackage()
-map rv :call RopeMove()
-map r1v :call RopeMoveCurrentModule()
-map ro :call RopeOrganizeImports()
-map rr :call RopeRename()
-map r1r :call RopeRenameCurrentModule()
-map rx :call RopeRestructure()
-map rac :call RopeShowCalltip()
-map rad :call RopeShowDoc()
-map ru :call RopeUseFunction()
-map g :call RopeGotoDefinition()
-map f :call RopeFindOccurrences()
 map d :call RopeShowDoc()
+map f :call RopeFindOccurrences()
+map g :call RopeGotoDefinition()
+map ru :call RopeUseFunction()
+map rad :call RopeShowDoc()
+map rac :call RopeShowCalltip()
+map rx :call RopeRestructure()
+map r1r :call RopeRenameCurrentModule()
+map rr :call RopeRename()
+map ro :call RopeOrganizeImports()
+map r1v :call RopeMoveCurrentModule()
+map rv :call RopeMove()
+map r1p :call RopeModuleToPackage()
+map ra? :call RopeLuckyAssist()
+map raj :call RopeJumpToGlobal()
+map rf :call RopeIntroduceFactory()
+map ri :call RopeInline()
+map rag :call RopeGotoDefinition()
+map rnv :call RopeGenerateVariable()
+map rnp :call RopeGeneratePackage()
+map rnm :call RopeGenerateModule()
+map rnf :call RopeGenerateFunction()
+map rnc :call RopeGenerateClass()
+map raf :call RopeFindOccurrences()
+map rai :call RopeFindImplementations()
+map rl :call RopeExtractVariable()
+map rm :call RopeExtractMethod()
+map ra/ :call RopeCodeAssist()
+map rs :call RopeChangeSignature()
 noremap  h
 vnoremap 	 %
 nnoremap 	 %
 noremap <NL> j
 noremap  k
 noremap  l
-map pk :call RopeCloseProject()
-map pnd :call RopeCreateDirectory()
-map pnf :call RopeCreateFile()
-map pnm :call RopeCreateModule()
-map pnp :call RopeCreatePackage()
-map pf :call RopeFindFile()
-map p4f :call RopeFindFileOtherWindow()
-map po :call RopeOpenProject()
-map pc :call RopeProjectConfig()
-map pr :call RopeRedo()
 map pu :call RopeUndo()
+map pr :call RopeRedo()
+map pc :call RopeProjectConfig()
+map po :call RopeOpenProject()
+map p4f :call RopeFindFileOtherWindow()
+map pf :call RopeFindFile()
+map pnp :call RopeCreatePackage()
+map pnm :call RopeCreateModule()
+map pnf :call RopeCreateFile()
+map pnd :call RopeCreateDirectory()
+map pk :call RopeCloseProject()
 snoremap  b<BS>
 xmap  "*d
 vnoremap   za
@@ -113,11 +113,11 @@ nnoremap j gj
 nnoremap k gk
 nnoremap n nzzzv
 xmap s <Plug>Vsurround
-nmap ys <Plug>Ysurround
-nmap yS <Plug>YSurround
-nmap yss <Plug>Yssurround
-nmap ySs <Plug>YSsurround
 nmap ySS <Plug>YSsurround
+nmap ySs <Plug>YSsurround
+nmap yss <Plug>Yssurround
+nmap yS <Plug>YSurround
+nmap ys <Plug>Ysurround
 nnoremap zO zCzO
 snoremap <Left> bi
 snoremap <Right> a
@@ -141,8 +141,8 @@ vmap <S-Del> "*d
 vmap <C-Insert> "*y
 vmap <S-Insert> "-d"*P
 nmap <S-Insert> "*P
-imap s <Plug>Isurround
 imap S <Plug>ISurround
+imap s <Plug>Isurround
 inoremap <silent> 	 =TriggerSnippet()
 imap  <Plug>SuperTabForward
 imap  <Plug>SuperTabBackward
@@ -209,147 +209,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +382 C:/Program\ Files\ (x86)/Vim/_vimrc
+badd +390 C:/Program\ Files\ (x86)/Vim/_vimrc
 badd +15 c:/PythonProjects/BladeWalker/src/bladewalker3.py
 badd +1 /Program\ Files\ (x86)/Vim/vimfiles/bundle/surround/doc/surround.txt
 badd +1 /Program\ Files\ (x86)/Vim/vimfiles/bundle/python_editing/python_editing.vim
-badd +1 c:/Program\ Files\ (x86)/vim/.gitignore
+badd +14 c:/Program\ Files\ (x86)/vim/.gitignore
 badd +1 N:/Git/.gitignore
-args /Program\ Files\ (x86)/Vim/vimfiles/bundle/python_editing/python_editing.vim
-edit c:/Program\ Files\ (x86)/vim/.gitignore
+badd +2 /Program\ Files\ (x86)/Vim/vimfiles/bundle/gundo/README.markdown
+badd +1 c:/Program\ Files\ (x86)/Vim/.gitmodules
+args /Program\ Files\ (x86)/Vim/vimfiles/bundle/gundo/README.markdown
+edit /Program\ Files\ (x86)/Vim/vimfiles/bundle/gundo/README.markdown
 set splitbelow splitright
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 1 + 29) / 59)
-exe '2resize ' . ((&lines * 54 + 29) / 59)
 argglobal
-enew
-file -MiniBufExplorer-
-let s:cpo_save=&cpo
-set cpo&vim
-nnoremap <buffer> 	 :call search('\[[0-9]*:[^\]]*\]'):<BS>
-nnoremap <buffer> h :call search('\[[0-9]*:[^\]]*\]','b'):<BS>
-nnoremap <buffer> j gj
-nnoremap <buffer> k gk
-nnoremap <buffer> l :call search('\[[0-9]*:[^\]]*\]'):<BS>
-nnoremap <buffer> p :wincmd p:<BS>
-nnoremap <buffer> <Down> gj
-nnoremap <buffer> <Up> gk
-nnoremap <buffer> <S-Tab> :call search('\[[0-9]*:[^\]]*\]','b'):<BS>
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=delete
-setlocal nobuflisted
-setlocal buftype=nofile
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=+1
-setlocal colorcolumn=+1
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal copyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != ''
-setlocal filetype=
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-set foldlevel=99
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-set foldmethod=indent
-setlocal foldmethod=indent
-setlocal foldminlines=1
-setlocal foldnestmax=20
-set foldtext=MyFoldText()
-setlocal foldtext=MyFoldText()
-setlocal formatexpr=
-setlocal formatoptions=qnr1
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=
-setlocal modeline
-setlocal nomodifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-set relativenumber
-setlocal relativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=%!g:statusLineText
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != ''
-setlocal syntax=
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=85
-setlocal thesaurus=
-setlocal undofile
-setlocal winfixheight
-setlocal winfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-wincmd w
-argglobal
+nnoremap <buffer> \3 I### 
+nnoremap <buffer> \2 yypVr-
+nnoremap <buffer> \1 yypVr=
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -364,8 +240,8 @@ setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=+1
 setlocal colorcolumn=+1
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
+setlocal comments=fb:*,fb:-,fb:+,n:>
+setlocal commentstring=>\ %s
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -382,8 +258,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != ''
-setlocal filetype=
+if &filetype != 'markdown'
+setlocal filetype=markdown
 endif
 setlocal foldcolumn=0
 setlocal foldenable
@@ -399,8 +275,8 @@ setlocal foldnestmax=20
 set foldtext=MyFoldText()
 setlocal foldtext=MyFoldText()
 setlocal formatexpr=
-setlocal formatoptions=qnr1
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=r1tcqln
+setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\|^[-*+]\\s\\+
 setlocal grepprg=
 setlocal iminsert=2
 setlocal imsearch=2
@@ -415,13 +291,13 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal nolist
 setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
+setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=octal,hex
 setlocal nonumber
 setlocal numberwidth=4
-setlocal omnifunc=
+setlocal omnifunc=htmlcomplete#CompleteTags
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
@@ -444,8 +320,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != ''
-setlocal syntax=
+if &syntax != 'markdown'
+setlocal syntax=markdown
 endif
 setlocal tabstop=4
 setlocal tags=
@@ -456,16 +332,12 @@ setlocal winfixheight
 setlocal winfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 8 - ((4 * winheight(0) + 27) / 54)
+let s:l = 2 - ((1 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
+2
 normal! 0
-wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 1 + 29) / 59)
-exe '2resize ' . ((&lines * 54 + 29) / 59)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
