@@ -39,12 +39,12 @@ map ru :call RopeUseFunction()
 map g :call RopeGotoDefinition()
 map f :call RopeFindOccurrences()
 map d :call RopeShowDoc()
-map  h
+noremap  h
 vnoremap 	 %
 nnoremap 	 %
-map <NL> j
-map  k
-map  l
+noremap <NL> j
+noremap  k
+noremap  l
 map pk :call RopeCloseProject()
 map pnd :call RopeCreateDirectory()
 map pnf :call RopeCreateFile()
@@ -62,19 +62,20 @@ vnoremap   za
 nnoremap   za
 snoremap % b<BS>%
 snoremap ' b<BS>'
+nnoremap * *
 map ,mq <Plug>MBEMarkCurrent
 map ,mbt <Plug>TMiniBufExplorer
 map ,mbu <Plug>UMiniBufExplorer
 map ,mbc <Plug>CMiniBufExplorer
 map ,mbe <Plug>MiniBufExplorer
+nnoremap ,i :call IndentGuides()
+nmap <silent> ,p :set invpaste:set paste?
+nnoremap ,w :%s/\s\+$//:let @/=''
 map ,bt :TMiniBufExplorer
 map ,bu :UMiniBufExplorer
 map ,bc :CMiniBufExplorer
 map ,b :MiniBufExplorer
-nmap <silent> ,p :set invpaste:set paste?
-nnoremap ,w :%s/\s\+$//:let @/=''
-nmap <silent> ,sv :so $MYVIMRC
-nmap <silent> ,ev :e $MYVIMRC
+nnoremap ,z zMzvzz
 nnoremap ,  :noh
 noremap <silent> ,cw :cclose
 noremap <silent> ,cc :close
@@ -83,21 +84,34 @@ noremap <silent> ,ch :wincmd h:close
 noremap <silent> ,ck :wincmd k:close
 noremap <silent> ,cj :wincmd j:close
 noremap <silent> ,s8 :vertical resize 83
-nnoremap ,z zMzvzz
+nmap <silent> ,sv :so $MYVIMRC
+nmap <silent> ,ev :e $MYVIMRC
 imap ¯ =RopeCodeAssistInsertMode()
+vnoremap / /\v
+nnoremap / /\v
 nnoremap ; :
 imap ¿ =RopeLuckyAssistInsertMode()
+nnoremap D d$
+nnoremap H ^
+nnoremap L $
+nnoremap N Nzzzv
 xmap S <Plug>VSurround
 snoremap U b<BS>U
 snoremap \ b<BS>\
 snoremap ^ b<BS>^
+nnoremap _py :set ft=python.django
+nnoremap _jt :set ft=htmljinja
+nnoremap _hd :set ft=htmldgango
 snoremap ` b<BS>`
 nmap cs <Plug>Csurround
 nmap ds <Plug>Dsurround
 xmap gS <Plug>VgSurround
 nmap gx <Plug>NetrwBrowseX
+nnoremap g, g,zz
+nnoremap g; g;zz
 nnoremap j gj
 nnoremap k gk
+nnoremap n nzzzv
 xmap s <Plug>Vsurround
 nmap ys <Plug>Ysurround
 nmap yS <Plug>YSurround
@@ -110,13 +124,13 @@ snoremap <Right> a
 snoremap <BS> b<BS>
 snoremap <silent> <S-Tab> i<Right>=BackwardsSnippet()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
-map <F2> :NERDTreeToggle
 nnoremap <F1> 
 vnoremap <F1> 
 nnoremap <Right> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Up> <Nop>
+map <F2> :NERDTreeToggle
 nnoremap <F5> :GundoToggle
 noremap <silent> <C-0> <
 noremap <silent> <C-9> -
@@ -195,44 +209,55 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +55 C:/Program\ Files\ (x86)/Vim/_vimrc
+badd +382 C:/Program\ Files\ (x86)/Vim/_vimrc
 badd +15 c:/PythonProjects/BladeWalker/src/bladewalker3.py
 badd +1 /Program\ Files\ (x86)/Vim/vimfiles/bundle/surround/doc/surround.txt
-badd +32 /Program\ Files\ (x86)/Vim/vimfiles/bundle/python_editing/python_editing.vim
+badd +1 /Program\ Files\ (x86)/Vim/vimfiles/bundle/python_editing/python_editing.vim
+badd +1 c:/Program\ Files\ (x86)/vim/.gitignore
+badd +1 N:/Git/.gitignore
 args /Program\ Files\ (x86)/Vim/vimfiles/bundle/python_editing/python_editing.vim
-edit /Program\ Files\ (x86)/Vim/vimfiles/bundle/python_editing/python_editing.vim
+edit c:/Program\ Files\ (x86)/vim/.gitignore
 set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
 wincmd t
 set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 1 + 29) / 59)
+exe '2resize ' . ((&lines * 54 + 29) / 59)
 argglobal
-vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*endf*\%[unction]\>', "bW")
-nnoremap <buffer> <silent> [] m':call search('^\s*endf*\%[unction]\>', "bW")
-vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "bW")
-nnoremap <buffer> <silent> [[ m':call search('^\s*fu\%[nction]\>', "bW")
-vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*endf*\%[unction]\>', "W")
-nnoremap <buffer> <silent> ][ m':call search('^\s*endf*\%[unction]\>', "W")
-vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "W")
-nnoremap <buffer> <silent> ]] m':call search('^\s*fu\%[nction]\>', "W")
+enew
+file -MiniBufExplorer-
+let s:cpo_save=&cpo
+set cpo&vim
+nnoremap <buffer> 	 :call search('\[[0-9]*:[^\]]*\]'):<BS>
+nnoremap <buffer> h :call search('\[[0-9]*:[^\]]*\]','b'):<BS>
+nnoremap <buffer> j gj
+nnoremap <buffer> k gk
+nnoremap <buffer> l :call search('\[[0-9]*:[^\]]*\]'):<BS>
+nnoremap <buffer> p :wincmd p:<BS>
+nnoremap <buffer> <Down> gj
+nnoremap <buffer> <Up> gk
+nnoremap <buffer> <S-Tab> :call search('\[[0-9]*:[^\]]*\]','b'):<BS>
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
+setlocal bufhidden=delete
+setlocal nobuflisted
+setlocal buftype=nofile
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=+1
 setlocal colorcolumn=+1
-setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
-setlocal commentstring=\"%s
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -249,8 +274,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+if &filetype != ''
+setlocal filetype=
 endif
 setlocal foldcolumn=0
 setlocal foldenable
@@ -260,23 +285,131 @@ set foldlevel=99
 setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
 set foldmethod=indent
-setlocal foldmethod=marker
+setlocal foldmethod=indent
 setlocal foldminlines=1
 setlocal foldnestmax=20
 set foldtext=MyFoldText()
 setlocal foldtext=MyFoldText()
 setlocal formatexpr=
-setlocal formatoptions=n1croql
+setlocal formatoptions=qnr1
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
 setlocal iminsert=2
 setlocal imsearch=2
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetVimIndent()
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,=end,=else,=cat,=fina,=END,0\\
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,#
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=
+setlocal modeline
+setlocal nomodifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+set relativenumber
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!g:statusLineText
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != ''
+setlocal syntax=
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=85
+setlocal thesaurus=
+setlocal undofile
+setlocal winfixheight
+setlocal winfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+wincmd w
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=+1
+setlocal colorcolumn=+1
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal copyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != ''
+setlocal filetype=
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+set foldlevel=99
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+set foldmethod=indent
+setlocal foldmethod=indent
+setlocal foldminlines=1
+setlocal foldnestmax=20
+set foldtext=MyFoldText()
+setlocal foldtext=MyFoldText()
+setlocal formatexpr=
+setlocal formatoptions=qnr1
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
@@ -311,8 +444,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != ''
+setlocal syntax=
 endif
 setlocal tabstop=4
 setlocal tags=
@@ -323,12 +456,16 @@ setlocal winfixheight
 setlocal winfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 81 - ((51 * winheight(0) + 28) / 56)
+let s:l = 8 - ((4 * winheight(0) + 27) / 54)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-81
-normal! 038l
+8
+normal! 0
+wincmd w
+2wincmd w
+exe '1resize ' . ((&lines * 1 + 29) / 59)
+exe '2resize ' . ((&lines * 54 + 29) / 59)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
