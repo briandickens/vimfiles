@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Brian Dickens
 " .vimrc
-" Created July 7, 2011
+" Created July 6, 2011
 " Last edited September 1, 2011
 " Edited Further September 12, 2011
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -72,9 +72,9 @@ set statusline+=%m                              " Modified Flag
 
 set statusline+=%=                              " Right align
 
-set statusline+=%#warningmsg#                " Highlight the following as a warning.
-set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
-set statusline+=%*                           " Reset highlighting.
+" set statusline+=%#warningmsg#                " Highlight the following as a warning.
+" set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
+" set statusline+=%*                           " Reset highlighting.
 
 " File format, encoding and type. Ex: (unix/utf-8/python)
 set statusline+=(
@@ -148,8 +148,6 @@ au FileType html,jinja,htmldjango nnoremap <buffer> <s-cr> vit<esc>a<cr><esc>vit
 " Smarter pasting
 au FileType html,jinja,htmldjango nnoremap <buffer> p :<C-U>YRPaste 'p'<CR>v`]=`]
 au FileType html,jinja,htmldjango nnoremap <buffer> P :<C-U>YRPaste 'P'<CR>v`]=`]
-au FileType html,jinja,htmldjango nnoremap <buffer> p :<C-U>YRPaste 'p'<CR>
-au FileType html,jinja,htmldjango nnoremap <buffer> ? :<C-U>YRPaste 'P'<CR>
 
 " Django tags
 au FileType jinja,htmldjango inoremap <buffer> <c-t> {%<space><space>%}<left><left><left>
@@ -172,6 +170,8 @@ au Filetype python noremap  <buffer> <localleader>rr :RopeRename<CR>
 au Filetype python vnoremap <buffer> <localleader>rm :RopeExtractMethod<CR>
 au Filetype python noremap  <buffer> <localleader>ri :RopeOrganizeImports<CR>
 au FileType python setlocal omnifunc=pythoncomplete#Complete
+set foldmethod=marker
+set commentstring=\ #\ %s
 " }}}
 
 " Vim {{{
@@ -214,8 +214,8 @@ set hlsearch
 " Use ,<space> to clear search hihlighting
 nnoremap <leader><space> :noh<cr>
 " Use <tab> to move between matched parens / brackets / etc
-nnoremap <tab> %
-vnoremap <tab> %
+" nnoremap <tab> %
+" vnoremap <tab> %
 
 " Make D behave
 nnoremap D d$
@@ -253,19 +253,19 @@ nnoremap zO zCzO
 nnoremap <leader>z zMzvzz
 
 function! MyFoldText() " {{{
-    let line = getline(v:foldstart)
+let line = getline(v:foldstart)
 
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
+let nucolwidth = &fdc + &number * &numberwidth
+let windowwidth = winwidth(0) - nucolwidth - 3
+let foldedlinecount = v:foldend - v:foldstart
 
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
+" expand tabs into spaces
+let onetab = strpart('          ', 0, &tabstop)
+let line = substitute(line, '\t', onetab, 'g')
 
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
 " }}}
@@ -286,12 +286,19 @@ nnoremap <F5> :GundoToggle<CR>
 
 " Wild Menu {{{
 set wildmenu
-set wildmode=list:longest " Make file completeion behave more like bash
+set wildmode=list:longest
+" set wildmode=full " Make file completeion behave more like bash
 set wildignore=*.swp,*.bak,*.pyc,*.class
 " }}}
 
 " NERDTree {{{
 map <F2> :NERDTreeToggle<CR>
+" }}}
+
+" Syntastic {{{
+let g:syntastic_enable_signs = 1
+let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{. }%W{Warning 1/%w: line %fw}]'
 " }}}
 
 " }}}
@@ -387,4 +394,4 @@ else
     colorscheme slate
 endif
 
-" }}}
+" }}r
