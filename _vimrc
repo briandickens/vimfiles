@@ -66,15 +66,17 @@ set laststatus=2
 " set statusline=%F%m%r%h%w\ [FMT=%{&ff}]\ [TYP=%Y]\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n
 set statusline=\                               " Space for padding on left side.
 set statusline+=%<                              " Truncate on the left side of text if too long.
-set statusline+=%F                              " File name (tail)
+set statusline+=%f                              " File name (tail)
+
+" set statusline+=%#warningmsg#                   " Highlight the following as a warning.
+
+set statusline+=%h                              " Help flag [help]
 set statusline+=%r                              " Readonly Flag
 set statusline+=%m                              " Modified Flag
 
-set statusline+=%=                              " Right align
+" set statusline+=%*                              " Reset highlighting.
 
-" set statusline+=%#warningmsg#                " Highlight the following as a warning.
-" set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
-" set statusline+=%*                           " Reset highlighting.
+set statusline+=%=                              " Right align
 
 " File format, encoding and type. Ex: (unix/utf-8/python)
 set statusline+=(
@@ -387,11 +389,11 @@ if has("gui_running")
     set guioptions=acg
     set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
     set mousehide " Hide mouse while typing
-    colorscheme solarized
+    colorscheme wombat
     set background=dark
 else
     set background=dark
     colorscheme slate
 endif
 
-" }}r
+" }}}
